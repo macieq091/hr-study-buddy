@@ -3,7 +3,7 @@
     "extends": ["react-app", "react-app/jest", "plugin:prettier/recommended", "prettier"],
     "plugins": ["prettier"],
     "rules": {
-        "prettier/prettier": ["error", { "endOfLine": "auto" }]
+        "prettier/prettier": ["warn", { "endOfLine": "auto" }]
     },
     "env": {
         "browser": true,

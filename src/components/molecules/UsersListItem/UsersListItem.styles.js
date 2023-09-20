@@ -33,7 +33,7 @@ export const StyledAverage = styled.div`
   }};
 `;
 
-export const StyledInfos = styled.div`
+export const StyledInfo = styled.div`
   padding: 25px 20px;
 
   p {

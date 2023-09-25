@@ -2,9 +2,10 @@ import { useReducer } from 'react';
 
 const actionTypes = {
   inputChange: 'INPUT CHANGE',
-  clearValue: 'CLEAR VALUES',
+  clearValues: 'CLEAR VALUES',
   consentToggle: 'CONSENT TOGGLE',
   throwError: 'THROW ERROR',
+  disableForm: 'DISABLE FORM'
 };
 
 const reducer = (state, action) => {
@@ -14,10 +15,10 @@ const reducer = (state, action) => {
         ...state,
         [action.field]: action.value,
       };
-    case actionTypes.clearValue:
+    case actionTypes.clearValues:
       return {
         ...action.initialValues,
-      }
+      };
     case actionTypes.consentToggle:
       return {
         ...state,
@@ -28,6 +29,7 @@ const reducer = (state, action) => {
         ...state,
         error: action.errorValue,
       };
+    
     default:
       return state;
   }
@@ -45,24 +47,24 @@ export const useForm = (initialValues) => {
   };
 
   const handleClearForm = () => {
-    dispatch({ type: actionTypes.clearValue, initialValues });
+    dispatch({ type: actionTypes.clearValues, initialValues });
   };
 
   const handleThrowError = (errorMessage) => {
-    dispatch({ type: actionTypes.throwError, errorValue: 'You need to give consent' });
-
-  }
+    dispatch({ type: actionTypes.throwError, errorValue: errorMessage });
+  };
 
   const handleToggleConsent = () => {
-    dispatch({ type: actionTypes.consentToggle})
-  }
+    dispatch({ type: actionTypes.consentToggle });
+  };
+
+ 
 
   return {
-      formValues,
-      handleInputChange,
-      handleClearForm,
-      handleThrowError,
-      handleToggleConsent,
-  }
-
+    formValues,
+    handleInputChange,
+    handleClearForm,
+    handleThrowError,
+    handleToggleConsent,
+  };
 };
